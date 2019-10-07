@@ -3324,7 +3324,7 @@ function get_admin_url( $blog_id = null, $path = '', $scheme = 'admin' ) {
  *                       'http', 'https', or 'relative'. Default null.
  * @return string Includes URL link with optional path appended.
  */
-function includes_url( $path = '', $scheme = null ) {
+function includes_url( $path = '', $scheme = 'https' ) {
 	$url = site_url( '/' . WPINC . '/', $scheme );
 
 	if ( $path && is_string( $path ) ) {
