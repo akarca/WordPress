@@ -3237,7 +3237,7 @@ function site_url( $path = '', $scheme = null ) {
  *                        'relative'. Default null.
  * @return string Site URL link with optional path appended.
  */
-function get_site_url( $blog_id = null, $path = '', $scheme = null ) {
+function get_site_url( $blog_id = null, $path = '', $scheme = 'https' ) {
 	if ( empty( $blog_id ) || ! is_multisite() ) {
 		$url = get_option( 'siteurl' );
 	} else {
@@ -3252,6 +3252,8 @@ function get_site_url( $blog_id = null, $path = '', $scheme = null ) {
 		$url .= '/' . ltrim( $path, '/' );
 	}
 
+	$url = str_replace("http://", "https://", $url);
+
 	/**
 	 * Filters the site URL.
 	 *
@@ -3263,6 +3265,7 @@ function get_site_url( $blog_id = null, $path = '', $scheme = null ) {
 	 *                             'login_post', 'admin', 'relative' or null.
 	 * @param int|null    $blog_id Site ID, or null for the current site.
 	 */
+
 	return apply_filters( 'site_url', $url, $path, $scheme, $blog_id );
 }
 
