@@ -3323,11 +3323,12 @@ function get_admin_url( $blog_id = null, $path = '', $scheme = 'admin' ) {
  */
 function includes_url( $path = '', $scheme = null ) {
 	$url = site_url( '/' . WPINC . '/', $scheme );
-	$url = str_replace("http://", "https://", $url);
 
 	if ( $path && is_string( $path ) ) {
 		$url .= ltrim( $path, '/' );
 	}
+
+	$url = str_replace("http://", "https://", $url);
 
 	/**
 	 * Filters the URL to the includes directory.
